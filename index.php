@@ -6,10 +6,13 @@ require 'APP\CONTROLER\tags-controler.php';
 require 'APP\MODEL\classes\tagsDAO.php';
 require 'APP\CONTROLER\wikis_controler.php';
 require 'APP\MODEL\classes\wikisDAO.PHP';
+require 'APP\controler\User_control.php';
+require 'APP\MODEL\classes\UserDAO.php';
 
 $cat_control = new category_control();
 $tags_control = new tags_controler();
 $wikiss_control = new wikis_controler();
+$users_control = new User_control();
 
 
 
@@ -24,7 +27,7 @@ if (isset($_GET["action"])) {
         $cat_control->AddCat();
         break;
        case 'delet_cat':
-      
+             
         break;
         case 'modify_cat':
 
@@ -41,7 +44,17 @@ if (isset($_GET["action"])) {
             case 'archiv_wiki':
                 $wikiss_control->archive_wiki();
                 break;
+                case 'register':
+            require 'APP\view\login\register.php';
+                    break;
+                    case 'insertUser':
+                        $users_control->addUser();
+                        break;
+                        case 'login':
+                            require 'APP\view\home.php';
+                            break;
+                
     }
 }else{
-        require 'APP/view\dashboard_admin\dashbord.php';
+        require 'APP\view\home.php';
     }

@@ -15,5 +15,7 @@ class category_control {
      header('location:index.php?action=ges_cat');
 
     }
+    
+
 }
 

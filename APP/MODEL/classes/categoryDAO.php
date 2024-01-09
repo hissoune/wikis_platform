@@ -25,4 +25,13 @@ class  CategoryDAO{
     }
     return $categories;
     }
+
+    public function AddCat($ncat){
+        $query ="INSERT INTO  categories (name) VALUES(:cat_name) ";
+        $stmt = $this->db->prepare($query);
+
+        $cat_name = $ncat->getName();
+        $stmt->bindParam(':cat_name', $cat_name);
+        $stmt->execute();
+    }
 }

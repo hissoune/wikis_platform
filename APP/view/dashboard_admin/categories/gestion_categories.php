@@ -13,6 +13,8 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- Layout styles -->
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\css\style.css">
     <!-- End layout styles -->
@@ -119,8 +121,40 @@
                 </ul>
               </nav>
             </div>
+            <!-- Add Category Modal -->
+<!-- Add Category Modal -->
+
+<div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Add your form elements for adding a category here -->
+        <form id="addCategoryForm" action="index.php?action=add_cat" method="post">
+          <div class="form-group">
+            <label for="categoryName">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required>
+          </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" >Add Category</button>
+      </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
 
             <div id="defult">
+            
+            <button class="btn btn-success p-2 px-4 my-1" data-toggle="modal" data-target="#addCategoryModal">Add</button>
               <table class="table table-bordered border-dark shadow">
                 <thead>
                   <tr>
@@ -180,6 +214,8 @@
     <script src="APP\view\dashboard_admin\assets\js\dashboard.js"></script>
     <script src="APP\view\dashboard_admin\assets\js\todolist.js"></script>
     <!-- End custom js for this page -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     
   </body>

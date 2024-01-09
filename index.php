@@ -20,15 +20,21 @@ if (isset($_GET["action"])) {
    
     $cat_control->get_categories();
        break;
+       case 'add_cat':
+        $cat_control->AddCat();
+        break;
        case 'delet_cat':
       
         break;
-        case '':
+        case 'modify_cat':
 
             break;
        case 'ges_tags':
         $tags_control->get_tags();
         break;
+        case 'add_tag':
+            $tags_control->AddTag();
+            break;
         case 'ges_wikis':
             $wikiss_control->get_wikis();
             break;

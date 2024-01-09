@@ -25,4 +25,13 @@ class  tagsDAO{
     }
     return $tags;
     }
+
+    public function Addtag($ntag){
+        $query ="INSERT INTO  tags (name) VALUES(:tag_nam) ";
+        $stmt = $this->db->prepare($query);
+
+        $tag_nam = $ntag->getName();
+        $stmt->bindParam(':tag_nam', $tag_nam);
+        $stmt->execute();
+    }
 }

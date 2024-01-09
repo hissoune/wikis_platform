@@ -7,4 +7,13 @@ class tags_controler {
        $tags = $tagsDAO->GetAlltags();
        require 'APP\VIEW\dashboard_admin\tags\tags_management.php';
     }
+
+    public static function AddTag(){
+        extract($_POST);
+        $ntag= new Tag('',$tag_nam);
+        $tagsDAO= new tagsDAO();
+        $tagsDAO->Addtag($ntag);
+     header('location:index.php?action=ges_tags');
+
+    }
 }

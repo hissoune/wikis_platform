@@ -37,6 +37,7 @@ CREATE TABLE wikis (
     category_id INT,
     image_filename VARCHAR(255),  -- Added column for image filename
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_archieved ENUM('yes','no') DEFAULT 'no',
     FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
 );

@@ -8,13 +8,17 @@ class Wiki {
     private $categoryId;
     private $imageFilename;
     private $createdAt;
+    private $is_archived;
 
-    public function __construct($title, $content, $authorId, $categoryId, $imageFilename = null) {
+    public function __construct($id,$title, $content, $authorId, $categoryId, $imageFilename = null ,$createdAt,$is_archived) {
+        $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->authorId = $authorId;
         $this->categoryId = $categoryId;
         $this->imageFilename = $imageFilename;
+        $this->createdAt = $createdAt;
+        $this->is_archived = $is_archived;
     }
 
     // Getters
@@ -44,5 +48,8 @@ class Wiki {
 
     public function getCreatedAt() {
         return $this->createdAt;
+    }
+    public function getis_archived() {
+        return $this->is_archived;
     }
 }

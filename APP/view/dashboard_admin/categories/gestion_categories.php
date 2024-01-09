@@ -78,21 +78,21 @@
             </li>
 
             <li class="nav-item ">
-              <a class="nav-link" href="index.php?action=ges" id="link">
+              <a class="nav-link" href="index.php?action=ges_cat" id="link">
                 <span class="menu-title">Gestion Des Category</span>
                 <i class="mdi mdi-medical-bag menu-icon"></i>
               </a>
             </li>
 
             <li class="nav-item ">
-              <a class="nav-link" href="APP\view\dashboard_admin\dashbord.php">
+              <a class="nav-link" href="index.php?action=ges_tags">
                 <span class="menu-title">Gestion Des Tags</span>
                 <i class="mdi mdi-tag-outline menu-icon"></i>
               </a>
               </li>
 
             <li class="nav-item  ">
-              <a class="nav-link" href="APP\view\dashboard_admin\dashbord.php">
+              <a class="nav-link" href="index.php?action=ges_wikis">
                 <span class="menu-title">Gestion Des Wikis</span>
                 <i class="mdi mdi-book-outline menu-icon"></i>
               </a>
@@ -135,7 +135,7 @@
                   <tr>
                     <td><?=$cat->getName();?></td>
                     <td><a class="btn btn-success rounded p-2" href="index.php?action=modify_cat&id=<?=$cat->getId();?>">modify</a></td>
-                    <td><a class="btn btn-danger rounded p-2" href="index.php?action=modify_cat&id=<?=$cat->getId();?>">delet</a></td>
+                    <td><a class="btn btn-danger rounded p-2" href="index.php?action=delet_cat&id=<?=$cat->getId();?>">delet</a></td>
                   </tr>
 
                    <?php }?>

@@ -120,7 +120,37 @@
               </nav>
             </div>
 
-            <div id="defult">ddddddddddddddddddddddddddddd
+            <div id="defult">
+              <table class="table table-bordered border-dark shadow">
+                <thead>
+                  <tr>
+                    <td>title</td>
+                    <td>content</td>
+                    <td>author</td>
+                    <td>category</td>
+                    <td>image_filename</td>
+                    <td>created_at</td>
+                    <td>is archieved</td>
+                    <td>archive</td>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($wikis as $wiki ){ ?>
+                  <tr>
+                    <td><?=$wiki->getTitle();?></td>
+                    <td><?=$wiki->getContent();?></td>
+                    <td><?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></td>
+                    <td><?=$wikisDAO->getCategorynam_byId($wiki->getCategoryId());?></td>
+                    <td><?=$wiki->getImageFilename();?></td>
+                    <td><?=$wiki->getCreatedAt();?></td>
+                    <td><?=$wiki->getis_archived();?></td>
+                    <td><a class="btn btn-warning rounded p-2" href="index.php?action=archiv_wiki&id=<?=$wiki->getId();?>">archive</a></td>
+                  </tr>
+
+                   <?php }?>
+                </tbody>
+              </table>
             </div>
            
            

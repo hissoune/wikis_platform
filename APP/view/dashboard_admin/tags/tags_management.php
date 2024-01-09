@@ -120,7 +120,27 @@
               </nav>
             </div>
 
-            <div id="defult">ddddddddddddddddddddddddddddd
+            <div id="defult">
+              <table class="table table-bordered border-dark shadow">
+                <thead>
+                  <tr>
+                    <td>tags</td>
+                    <td>modify</td>
+                    <td>delete</td>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($tags as $tag ){ ?>
+                  <tr>
+                    <td><?=$tag->getName();?></td>
+                    <td><a class="btn btn-success rounded p-2" href="index.php?action=modify_cat&id=<?=$tag->getId();?>">modify</a></td>
+                    <td><a class="btn btn-danger rounded p-2" href="index.php?action=modify_cat&id=<?=$tag->getId();?>">delet</a></td>
+                  </tr>
+
+                   <?php }?>
+                </tbody>
+              </table>
             </div>
            
            

@@ -18,10 +18,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="index.php?action=login"><strong>Login</strong></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=register">Register</a>
+        <a class="nav-link" href="index.php?action=register"><strong>Register</strong></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?action=if_notuser"><strong>dashboard</strong></a>
       </li>
     </ul>
   </div>
@@ -44,11 +47,97 @@
   </div>
 </div>
 
-<div class="container-scroller">
-  <!-- Rest of the dashboard content structure -->
-  <!-- Including navigation bar, sidebar, main panel, etc. -->
-  <!-- ... -->
-</div>
+<div class="container-fluid row">
+                    
+                    <!-- Content Row -->
+                    <div class="col-4">
+                    <div class="row">
+
+                        <!-- First Column -->
+                        <div class="col-lg-12">
+
+                            <!-- Custom Text Color Utilities -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary"> Les wikis récents </h6>
+                                </div class="card-body ">
+                                <?php foreach($wikis as $wiki){?>
+                                    <div class=" mb-3">
+                                       <div class="card">
+                                        <div class="card-body">
+                                        <h5 class="card-title"><a class="nav-link" href="index.php?action=fetch_wiki"><?=$wiki->getTitle();?></a></h5>
+                                          <p class="card-text"><?=$wiki->getContent();?></p>
+                                      <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+                                    <?php }?>
+                                <div>
+
+                                </div>
+                                
+                                        
+                                    </div>
+                                    <hr>
+                            
+                            </div>
+                            
+                            <!-- Custom Font Size Utilities -->
+
+
+                        </div>
+                        </div>
+                           
+                        <!-- Second Column -->
+                        <div class="col-lg-4">
+
+                            <!-- Background Gradient Utilities -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tous les wikis
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                <?php foreach($allwikis as $wiki){?>
+                                    <div class=" mb-3">
+                                       <div class="card">
+                                        <div class="card-body">
+                                        <h5 class="card-title"><a class="nav-link" href="index.php?action=fetch_wiki"><?=$wiki->getTitle();?></a></h5>
+                                          <p class="card-text"><?=$wiki->getContent();?></p>
+                                      <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+                                    <?php }?>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Third Column -->
+                        <div class="col-lg-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Les catégories récents</h6>
+                                </div>
+                                <div class="card-body">
+                                <?php foreach($wikis as $wiki){?>
+                                    <p class="text-xs"><?=$wikisDAO->getCategorynam_byId($wiki->getCategoryId());?></p>
+                                    <?php }?>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
 
 <!-- Required JS files -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

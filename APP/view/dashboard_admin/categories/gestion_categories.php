@@ -152,6 +152,11 @@
 </div>
 
 
+
+
+
+
+
             <div id="defult">
             
             <button class="btn btn-success p-2 px-4 my-1" data-toggle="modal" data-target="#addCategoryModal">Add</button>
@@ -168,7 +173,8 @@
                   <?php foreach($categorys as $cat ){ ?>
                   <tr>
                     <td><?=$cat->getName();?></td>
-                    <td><a class="btn btn-success rounded p-2" href="index.php?action=modify_cat&id=<?=$cat->getId();?>">modify</a></td>
+
+                    <td>  <a href="index.php?action=modify_cat&id=<?=$cat->getId();?>" class="btn btn-success rounded p-2" >modify</a></td>
                     <td><a class="btn btn-danger rounded p-2" href="index.php?action=delet_cat&id=<?=$cat->getId();?>">delet</a></td>
                   </tr>
 

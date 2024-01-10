@@ -19,6 +19,14 @@ $users_control = new User_control();
 if (isset($_GET["action"])) {
      $action = $_GET["action"];
   switch($action){
+    case 'admin':
+        require 'APP\view\dashboard_admin\dashbord.php';
+
+                break;
+        case 'auther':
+            $wikiss_control->get_wikis_forauther();
+
+            break;
    case 'ges_cat':
    
     $cat_control->get_categories();
@@ -30,8 +38,13 @@ if (isset($_GET["action"])) {
              
         break;
         case 'modify_cat':
-
+            
+            $cat_control->get_categories_byid();
             break;
+            case 'modify':
+                
+                $cat_control->modify_cat();
+                break;
        case 'ges_tags':
         $tags_control->get_tags();
         break;
@@ -51,10 +64,27 @@ if (isset($_GET["action"])) {
                         $users_control->addUser();
                         break;
                         case 'login':
-                            require 'APP\view\home.php';
+                            require 'APP\view\login\login.php';
                             break;
-                
+                            case 'log_in':
+                                $users_control->log_in();
+                                break;
+                                case 'if_notuser':
+                                    $users_control->if_user();
+                                    break;
+                                    case 'logout':
+                                        $users_control->logout();
+                                        break;
+                                        case 'fetch_wiki':
+                                            $wikiss_control->get_wiki_detail();
+
+                                            
+                                            break;
+                                    
     }
 }else{
-        require 'APP\view\home.php';
+       
+    $wikiss_control->get_five_wikis();
+    
+        
     }

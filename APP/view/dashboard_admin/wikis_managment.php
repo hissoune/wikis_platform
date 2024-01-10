@@ -8,12 +8,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\vendors\mdi\css\materialdesignicons.min.css">
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\vendors\css\vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\css\style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="APP\view\dashboard_admin\assets\images\favicon.ico" />

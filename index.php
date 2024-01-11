@@ -52,7 +52,9 @@ if (isset($_GET["action"])) {
             $tags_control->AddTag();
             break;
         case 'ges_wikis':
-            $wikiss_control->get_wikis();
+            $wikis=$wikiss_control->get_wikis();
+            require 'APP\VIEW\dashboard_admin\wikis_managment.php';
+
             break;
             case 'archiv_wiki':
                 $wikiss_control->archive_wiki();
@@ -80,11 +82,34 @@ if (isset($_GET["action"])) {
 
                                             
                                             break;
+                                            case 'add_wiki':
+                                                session_start();
+                                               $user= $_SESSION['user'];
+                                               $userid= $user['id'];
+                                              $categories= $cat_control->get_categories_select();
+                                               $tags= $tags_control->get_tags_toselect();
+                                                require 'APP\VIEW\dashboard_auther\add_wiki.php';
+                                                break;
+
+                                                case 'insert_wiki':
+                                                    $wikiss_control->insert_wikis();
+                                                    break;
+                                                    case 'search':
+                                                        $wikiss_control->search();
+
+                                                        break;
+                                                        case 'delet_wiki':
+                                                            $wikiss_control->delet_wiki();
+                                                            break;
                                     
     }
 }else{
-       
-    $wikiss_control->get_five_wikis();
+    $wikisDAO= new wikisDAO();
+    $wikis= $wikiss_control->get_five_wikis();
+    $allwikis= $wikiss_control->get_wikis();
+    $categories= $cat_control->get_categories_latest();
+
+    require 'APP\VIEW\home.php';
     
         
     }

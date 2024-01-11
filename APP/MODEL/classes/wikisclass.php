@@ -10,7 +10,7 @@ class Wiki {
     private $createdAt;
     private $is_archived;
 
-    public function __construct($id,$title, $content, $authorId, $categoryId, $imageFilename = null ,$createdAt,$is_archived) {
+    public function __construct($id,$title, $content, $authorId, $categoryId, $imageFilename  ,$createdAt,$is_archived) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;

@@ -19,7 +19,22 @@ class  CategoryDAO{
 
         $categories = array();
         foreach ($result as $row) {
-            $category = new category($row['id'],$row['name'] );
+            $category = new category($row['id'],$row['name'],$row['created_at'] );
+            $categories[] = $category;
+        
+    }
+    return $categories;
+    }
+
+    public  function GetCategories_latest() {
+        $query = "SELECT * from categories order by created_at desc limit 5 ";
+        $stmt =  $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $categories = array();
+        foreach ($result as $row) {
+            $category = new category($row['id'],$row['name'],$row['created_at'] );
             $categories[] = $category;
         
     }

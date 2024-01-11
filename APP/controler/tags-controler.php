@@ -16,4 +16,9 @@ class tags_controler {
      header('location:index.php?action=ges_tags');
 
     }
+    public  static function get_tags_toselect(){
+        $tagsDAO= new tagsDAO();
+       $tags = $tagsDAO->GetAlltags();
+       return $tags;
+    }
 }

@@ -165,6 +165,7 @@
                   <tr>
                     <td>category</td>
                     <td>modify</td>
+                    <td>created at</td>
                     <td>delete</td>
                    
                   </tr>
@@ -173,6 +174,7 @@
                   <?php foreach($categorys as $cat ){ ?>
                   <tr>
                     <td><?=$cat->getName();?></td>
+                    <td><?=$cat->getCreatedAt();?></td>
 
                     <td>  <a href="index.php?action=modify_cat&id=<?=$cat->getId();?>" class="btn btn-success rounded p-2" >modify</a></td>
                     <td><a class="btn btn-danger rounded p-2" href="index.php?action=delet_cat&id=<?=$cat->getId();?>">delet</a></td>

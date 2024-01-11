@@ -72,7 +72,7 @@
             
             <li class="nav-item">
               <a class="nav-link" href="index.php">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
@@ -108,53 +108,12 @@
               </nav>
             </div>
            
-            <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Add your form elements for adding a category here -->
-        <form id="addCategoryForm" action="index.php?action=add_cat" method="post">
-          <div class="form-group">
-            <label for="categoryName">wiki tittle</label>
-            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required>
-          </div>
-          <div class="form-group">
-            <label for="categoryName">content</label>
-            <textarea type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required> </textarea>
-          </div>
-          <div class="form-group">
-            <label for="categoryName">Category Name</label>
-            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required>
-          </div>
-          <div class="form-group">
-            <label for="categoryName">Category Name</label>
-            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required>
-          </div>
-          <div class="form-group">
-            <label for="categoryName">Category Name</label>
-            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="cat_nam" required>
-          </div>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" >Add Category</button>
-      </div>
-        </form>
-      </div>
-     
-    </div>
-  </div>
-</div>
+            
             <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div id="defult">
-            <button class="btn btn-success p-2 px-4 my-1" data-toggle="modal" data-target="#addCategoryModal">Add</button>
+            <a class="btn btn-success p-2 px-4 my-1" href="index.php?action=add_wiki">Add</a>
                 <table class="table table-bordered border-dark shadow">
                     <thead>
                         <tr>
@@ -178,7 +137,7 @@
                                 <td class="col-md-1"><?=$wiki->getCreatedAt();?></td>
                                 <td class="col-md-1">
                                     <a class="btn btn-primary rounded p-2" href="index.php?action=archiv_wiki&id=<?=$wiki->getId();?>">modify</a>
-                                    <a class="btn btn-danger rounded p-2" href="index.php?action=archiv_wiki&id=<?=$wiki->getId();?>">delet</a>
+                                    <a class="btn btn-danger rounded p-2" href="index.php?action=delet_wiki&id=<?=$wiki->getId();?>">delet</a>
                                 </td>
                             </tr>
                         <?php }?>

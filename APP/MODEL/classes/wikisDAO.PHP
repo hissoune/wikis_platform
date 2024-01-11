@@ -76,4 +76,56 @@ class  wikisDAO{
         $stmt->execute();
     }
 
+    function addWikiWithTags($wiki ,$tags) {
+       
+        $query = "INSERT INTO wikis (title, content, author_id, category_id, image_filename) 
+                  VALUES (:title, :content, :author_id, :category_id, :image_filename)";
+        $stmt = $this->db->prepare($query);
+        $wiki_title=$wiki->getTitle();
+        $wiki_content=$wiki->getContent();
+        $author_id=$wiki->getAuthorId();
+        $category_id=$wiki->getCategoryId();
+        $image_filename=$wiki->getImageFilename();
+        
+        $stmt->bindParam(':title', $wiki_title);
+        $stmt->bindParam(':content', $wiki_content);
+        $stmt->bindParam(':author_id', $author_id);
+        $stmt->bindParam(':category_id', $category_id);
+        $stmt->bindParam(':image_filename', $image_filename);
+        $stmt->execute();
+    
+        
+        $wikiId = $this->db->lastInsertId();
+    
+        
+        
+            foreach ($tags as $tagId) {
+                $query = "INSERT INTO wikis_tags (wiki_id, tag_id) VALUES (:wiki_id, :tag_id)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bindParam(':wiki_id', $wikiId);
+                $stmt->bindParam(':tag_id', $tagId);
+                $stmt->execute();
+            }
+        
+    }
+    
+    public function search_data($searchTerm){
+        $query = "SELECT wikis.* , users.name as authername from wikis join users on wikis.author_id=users.id WHERE title LIKE :query ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':query', '%' . $searchTerm . '%', PDO::PARAM_STR);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Return the results as JSON
+        return $results;
+    }
+    
+    public function delet_wiki($id){
+              $query= " DELETE FROM wikis where id = :id ";
+              $stmt = $this->db->prepare($query);
+              $stmt->bindParam(':id', $id);
+              $stmt->execute();
+
+    }
+
 }

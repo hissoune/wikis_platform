@@ -36,5 +36,17 @@ public  static function get_categories_byid(){
 
     }
 
+    public  static function get_categories_select(){
+        $categoryDAO= new CategoryDAO();
+       $categorys = $categoryDAO->GetAllCategories();
+       return $categorys;
+    }
+
+    public  static function get_categories_latest(){
+        $categoryDAO= new CategoryDAO();
+       $categorys = $categoryDAO->GetCategories_latest();
+       return $categorys;
+    }
+
 }
 

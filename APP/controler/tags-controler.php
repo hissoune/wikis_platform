@@ -24,7 +24,6 @@ class tags_controler {
     public static function statistctags(){
         $tagsDAO= new tagsDAO();
         $tags = $tagsDAO->statistctags();
-        return $tags;
-        
+        return $tags;   
     }
 }

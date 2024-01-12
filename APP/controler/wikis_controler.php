@@ -41,11 +41,11 @@ public static function getcatgrnam($id){
        
        return $wikis;
     }
-    public static function get_wiki_detail(){
-        $id=$_GET['id'];
+    public static function get_wiki_detail($id){
+        
         $wikisDAO= new wikisDAO();
        $wikis = $wikisDAO->getwiki_byid($id);
-       require 'APP\view\wiki_detail.php';
+      return $wikis;
     }
    
     public static function archive_wiki(){
@@ -55,6 +55,12 @@ public static function getcatgrnam($id){
         header('location: index.php?action=ges_wikis');
         
     }
+    public static function getAuthernam_byId($id){
+        $wikisDAO= new wikisDAO();
+        $authorname= $wikisDAO->getAuthernam_byId($id);
+        return $authorname;
+    }
+    
     public static function restor_wiki(){
         $id = $_GET['id'];
         $wikisDAO= new wikisDAO();
@@ -171,5 +177,6 @@ public static function getcatgrnam($id){
         echo 'No tags provided.';
     }
 }
+
 
 }

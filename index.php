@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require 'APP\MODEL\config\Connection.php';
 require 'APP\controler\category_controler.php';
 require 'APP\MODEL\classes\categoryDAO.php';
@@ -24,18 +25,17 @@ if (isset($_GET["action"])) {
     $counttags=$tags_control->statistctags();
    $countusers= $users_control->statisticuser();
        $countwikis= $wikiss_control->staticwiki();
-print_r($countwikis);
         require 'APP\view\dashboard_admin\dashbord.php';
 
                 break;
         case 'auther':
-            session_start();
-         $user= $_SESSION['user'];
-         $userid= $user['id'];
+            
          
-         $wikis= $wikiss_control->get_wikifor_athor($userid);
+         
+    
         
             require 'APP\VIEW\dashboard_auther\dashboard_auther.php';
+            $wikis= $wikiss_control->get_wikifor_athor($userid);
 
             break;
    case 'ges_cat':
@@ -46,7 +46,7 @@ print_r($countwikis);
         $cat_control->AddCat();
         break;
        case 'delet_cat':
-             
+        $cat_control->delet_catt();
         break;
         case 'modify_cat':
             
@@ -97,7 +97,12 @@ print_r($countwikis);
                                         $users_control->logout();
                                         break;
                                         case 'fetch_wiki':
-                                            $wikiss_control->get_wiki_detail();
+                                            $id=$_GET['id'];
+                                            $tags= $tags_control->get_tags_toselect();
+
+                                           $wikis= $wikiss_control->get_wiki_detail($id);
+                                            require 'APP\view\wiki_detail.php';
+
 
                                             
                                             break;
@@ -121,15 +126,15 @@ print_r($countwikis);
                                                             $wikiss_control->delet_wiki();
                                                             break;
                                                             case 'modif_wiki':
-                                                                session_start();
+                                                        
                                                                $wikis= $wikiss_control->getwikibyid();
-                                                               print_r($wikis);
+                                                              
                                                                 $categories= $cat_control->get_categories_select();
                                                                 $user= $_SESSION['user'];
                                                                 $userid= $user['id'];
                                                                 $tags= $tags_control->get_tags_toselect();
                                                                 $curenttags= $wikiss_control->gettagsid();
-                                                                print_r($curenttags);
+                                                        
 
                                                                 $curent_cat=$_GET['catid'];
                                                              require 'APP\VIEW\dashboard_auther\modify_wiki.php';

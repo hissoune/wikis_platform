@@ -1,3 +1,6 @@
+<?php if(isset($_SESSION['user']) && $_SESSION['user']['role']== 'admin') { ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -213,3 +216,6 @@
 
   </body>
 </html>
+<?php }else {
+  header('location: index.php?action=login');
+}

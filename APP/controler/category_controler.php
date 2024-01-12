@@ -9,7 +9,7 @@ class category_control {
     }
     public static function AddCat(){
         extract($_POST);
-        $ncat= new Category('',$cat_nam);
+        $ncat= new Category('',$cat_nam,'');
         $categoryDAO= new CategoryDAO();
      $categoryDAO->AddCat($ncat);
      header('location:index.php?action=ges_cat');
@@ -26,7 +26,7 @@ public  static function get_categories_byid(){
     }
     public static function modify_cat(){
         extract($_POST);
-        $ncat= new Category('',$cat_nam);
+        $ncat= new Category('',$cat_nam,'');
        
         $categoryDAO= new CategoryDAO();
        $rrr= $categoryDAO->modif_cat($cat_nam ,$cat_id );
@@ -40,6 +40,12 @@ public  static function get_categories_byid(){
         $categoryDAO= new CategoryDAO();
        $categorys = $categoryDAO->GetAllCategories();
        return $categorys;
+    }
+    public static function delet_catt(){
+        $id=$_GET['id'];
+        $categoryDAO= new CategoryDAO();
+        $categoryDAO-> delet_cat($id);
+       header('location:index.php?action=ges_cat');
     }
 
     public  static function get_categories_latest(){

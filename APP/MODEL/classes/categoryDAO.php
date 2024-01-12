@@ -54,11 +54,16 @@ class  CategoryDAO{
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $cat = new category($result['id'],$result['name'] );
+        $cat = new category($result['id'],$result['name'],$result['created_at'] );
 
        return $cat;
 }
-
+public function delet_cat($id){
+    $query = "DELETE from categorie where id=:id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+}
 public function modif_cat($cat_nam ,$cat_id){
     $query= "UPDATE  categories set name = :cat_name where id = :id";
     $stmt = $this->db->prepare($query);

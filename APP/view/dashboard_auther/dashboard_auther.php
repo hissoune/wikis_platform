@@ -1,3 +1,6 @@
+<?php if(isset($_SESSION['user']) && $_SESSION['user']['role']== 'auther') {  $user= $_SESSION['user'];
+         $userid= $user['id']; ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -193,4 +196,6 @@
 
     
   </body>
-</html>
+</html><?php }else {
+  header('location: index.php?action=login');
+}

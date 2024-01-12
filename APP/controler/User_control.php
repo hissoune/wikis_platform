@@ -45,7 +45,7 @@ class User_control{
         
     }
     public static function if_user(){
-        session_start();
+        
         $user = $_SESSION['user'];
         if($user){
             if($user['role']=='admin'){

@@ -37,23 +37,45 @@
    
    
 
-<div class="container-scroller">
+<div class="container-scroller w-75">
  
-    <div class="container">
-    <div class="row">
-        <?php foreach ($wikis as $wiki) { ?>
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><a class="nav-link" href="index.php?action=fetch_wiki"><?=$wiki->getTitle();?></a></h5>
-                        <p class="card-text"><?=$wiki->getContent();?></p>
-                        <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
-                    </div>
+<div class="card shadow mb-4 w-100">
+        <div class="card-header py-3">
+        <h1><?=$wikis->getTitle();?></h1>
+
+        </div>
+        
+        <div class="card-body ">
+        <div class="row">
+
+            
+      
+            
+           
+        <div class="card-body">
+    <img class="card-img" src="PUBLIC/images/<?=$wikis->getImageFilename();?>" >
+    <p class="card-text">Created by: <?=$wikiss_control->getAuthernam_byId($wikis->getAuthorId());?></p>
+    <p class="card-text"> <?=$wikis->getContent();?></p>
+    <p class="card-text">Created At: <?=$wikis->getCreatedAt();?></p>
+
+    <!-- Display tags in one row -->
+    
+        <div class="row w-100">
+            <!-- Fetch and display tags dynamically from your database -->
+            <?php foreach ($tags as $tag): ?>
+                <div class="col-3">
+                    <label class="form-check-label border" >#<?php echo $tag->getName(); ?></label>
                 </div>
-            </div>
-        <?php }?>
-    </div>
-</div>
+            <?php endforeach; ?>
+        </div>
+    
+
+          </div>
+         
+      </div>
+     
+            
+          </div>
 
 
     

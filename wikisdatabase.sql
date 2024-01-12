@@ -88,16 +88,16 @@ INSERT INTO users (name, email, password, role) VALUES
     ('Fitness');
 
     INSERT INTO wikis (title, content, author_id, category_id, image_filename) VALUES
-    ('Wiki 1', 'Content for Wiki 1', 3, 2, 'image1.jpg'),
-    ('Wiki 2', 'Content for Wiki 2', 4, 1, 'image2.jpg'),
-    ('Wiki 3', 'Content for Wiki 3', 3, 3, 'image3.jpg'),
-    ('Wiki 4', 'Content for Wiki 4', 3, 4, 'image4.jpg'),
-    ('Wiki 5', 'Content for Wiki 5', 4, 5, 'image5.jpg'),
-    ('Wiki 6', 'Content for Wiki 6', 4, 1, 'image6.jpg'),
-    ('Wiki 7', 'Content for Wiki 7', 3, 2, 'image7.jpg'),
-    ('Wiki 8', 'Content for Wiki 8', 3, 3, 'image8.jpg'),
-    ('Wiki 9', 'Content for Wiki 9', 4, 4, 'image9.jpg'),
-    ('Wiki 10', 'Content for Wiki 10', 4, 5, 'image10.jpg');
+    ('Wiki 1', 'Content for Wiki 1', 3, 2, 'th.jpg'),
+    ('Wiki 2', 'Content for Wiki 2', 4, 1, 'th.jpg'),
+    ('Wiki 3', 'Content for Wiki 3', 3, 3, 'th.jpg'),
+    ('Wiki 4', 'Content for Wiki 4', 3, 4, 'th.jpg'),
+    ('Wiki 5', 'Content for Wiki 5', 4, 5, 'th.jpg'),
+    ('Wiki 6', 'Content for Wiki 6', 4, 1, 'th.jpg'),
+    ('Wiki 7', 'Content for Wiki 7', 3, 2, 'th.jpg'),
+    ('Wiki 8', 'Content for Wiki 8', 3, 3, 'th.jpg'),
+    ('Wiki 9', 'Content for Wiki 9', 4, 4, 'th.jpg'),
+    ('Wiki 10', 'Content for Wiki 10', 4, 5, 'th.jpg');
 
     INSERT INTO wikis_tags (wiki_id, tag_id) VALUES
     (1, 3), -- Wiki 1 associated with tag 3

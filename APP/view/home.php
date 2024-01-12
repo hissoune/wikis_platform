@@ -59,7 +59,7 @@
 
 </head>
 
-<body class=" bg-info-subtle ">
+<body class="  ">
 
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -101,76 +101,91 @@
   </div>
  
 
-  <div class="container-fluid row">
+  <div class="container-fluid row  ">
    
-    <div class="col-4">
+    <div class="col-4 mt-5">
       <div class="row">
         <!-- First Column -->
         <div class="col-lg-12">
           <!-- Custom Text Color Utilities -->
-          <div class="card shadow mb-4">
+          <div class="card border mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary"> Les wikis récents </h6>
             </div>
             <div class="card-body">
               <?php foreach($wikis as $wiki){?>
-              <div class=" mb-3">
+              <div class=" mb-3 border border-primary">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title"><a class="nav-link" href="index.php?action=fetch_wiki"><?=$wiki->getTitle();?></a></h5>
-                    <p class="card-text"><?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></p>
-                    <p class="card-text"><?=$wiki->getContent();?></p>
+                  <h5 class="card-title">
+    <a class="nav-link" href="index.php?action=fetch_wiki&id=<?=$wiki->getId(); ?>">
+        <?= $wiki->getTitle(); ?>
+    </a>
+</h5>
+                    <p class="card-text">Created by: <?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></p>
                     <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
                   </div>
                 </div>
-                <hr>
+                
               </div>
               <?php }?>
             </div>
-            <hr>
+            
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Second Column -->
-    <div class="col-lg-4">
-      <!-- Background Gradient Utilities -->
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Tous les wikis</h6>
-        </div>
-        <div class="card-body">
-          <?php foreach($allwikis as $wiki){?>
-          <div class=" mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><a class="nav-link" href="index.php?action=fetch_wiki"><?=$wiki->getTitle();?></a></h5>
-                <p class="card-text"><?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></p>
-                <p class="card-text"><?=$wiki->getContent();?></p>
-                <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <?php }?>
-        </div>
-      </div>
-    </div>
-
-    <!-- Third Column -->
-    <div class="col-lg-4">
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Les catégories récents</h6>
         </div>
         <div class="card-body">
           <?php foreach($categories as $cat){?>
-          <p class="text-xs"><?=$cat->getName();?></p>
+            <div class=" ">
+          <p class="text-xs "><?=$cat->getName();?></p>
+          </div>
           <?php }?>
         </div>
       </div>
     </div>
+      
+    <!-- Second Column -->
+    <div class="col-lg-8  mt-5">
+      <!-- Background Gradient Utilities -->
+      
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Tous les wikis</h6>
+        </div>
+        
+        <div class="card-body ">
+        <div class="row">
+          <?php foreach($allwikis as $wiki){?>
+            <div class="col-6">
+          <div class=" mb-3 border border border-primary">
+            <div class="card">
+              <div class="card-body">
+              <img class="card-img" src="PUBLIC/images/<?=$wiki->getImageFilename();?>" >
+
+                <h5 class="card-title "><a class="nav-link" href="index.php?action=fetch_wiki&id=<?=$wiki->getId(); ?>"><?=$wiki->getTitle();?></a></h5>
+                <p class="card-text">Created by: <?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></p>
+                <p class="card-text">Created At: <?=$wiki->getCreatedAt();?></p>
+              </div>
+            </div>
+            
+          </div>
+          </div>
+          <?php }?>
+          </div>
+          </div>
+         
+      </div>
+     
+    </div>
+
+    <!-- Third Column -->
+    
+      
+   
     
   </div>
 

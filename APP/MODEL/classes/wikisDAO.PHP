@@ -54,6 +54,8 @@ public function statistiquwiki(){
     }
 }
 
+
+
     public  function Get5wikis() {
         $query = "SELECT * from wikis order by created_at desc limit 5";
         $stmt =  $this->db->prepare($query);
@@ -70,17 +72,30 @@ public function statistiquwiki(){
     }
 
     public function getwiki_byid($id){
-        $query = "SELECT * from wikis where id = $id";
-        $stmt =  $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        
-            $wiki = new Wiki($result['id'],$result['title'],$result['content'],$result['author_id'],$result['category_id'],$result['image_filename'],$result['created_at'],$result['is_archieved'] );
-            
-        
+        $query = "SELECT * FROM wikis WHERE id = :id";
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Check if data is fetched
+    if ($result) {
+        // Create a Wiki object and return it
+        return new Wiki(
+            $result['id'],
+            $result['title'],
+            $result['content'],
+            $result['author_id'],
+            $result['category_id'],
+            $result['image_filename'],
+            $result['created_at'],
+            $result['is_archieved']
+        );
+    } else {
+        // Return null or handle the case when no data is found
+        return null;
+    }
     
-          return $wiki;
           
     }
     public function get_tagsid($id) {
@@ -178,7 +193,18 @@ public function statistiquwiki(){
     }
     
     public function search_data($searchTerm){
-        $query = "SELECT wikis.* , users.name as authername from wikis join users on wikis.author_id=users.id WHERE title LIKE :query ";
+        $query = "SELECT wikis.*,
+        users.name as authername,
+        categories.name as cat_nam,
+        tags.name as tagname
+    from wikis
+        join users on wikis.author_id = users.id
+        join categories on wikis.category_id = categories.id
+        join wikis_tags on wikis_tags.wiki_id = wikis.id
+        join tags on wikis_tags.tag_id = tags.id
+    WHERE title LIKE :query
+        or categories.name LIKE :query
+        or tags.name LIKE :query";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':query', '%' . $searchTerm . '%', PDO::PARAM_STR);
         $stmt->execute();

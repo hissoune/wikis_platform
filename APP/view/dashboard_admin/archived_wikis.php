@@ -8,12 +8,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\vendors\mdi\css\materialdesignicons.min.css">
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\vendors\css\vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\css\style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="APP\view\dashboard_admin\assets\images\favicon.ico" />
@@ -70,21 +65,33 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <span class="menu-title">home</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.php?action=logout">
-                <span class="menu-title">log out</span>
+          <li class="nav-item">
+              <a class="nav-link" href="index.php?action=admin">
+                <span class="menu-title">statistique</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
 
-          
-            
+            <li class="nav-item ">
+              <a class="nav-link" href="index.php?action=ges_cat" id="link">
+                <span class="menu-title">Gestion Des Category</span>
+                <i class="mdi mdi-medical-bag menu-icon"></i>
+              </a>
+            </li>
+
+            <li class="nav-item ">
+              <a class="nav-link" href="index.php?action=ges_tags">
+                <span class="menu-title">Gestion Des Tags</span>
+                <i class="mdi mdi-tag-outline menu-icon"></i>
+              </a>
+              </li>
+
+            <li class="nav-item  ">
+              <a class="nav-link" href="index.php?action=ges_wikis">
+                <span class="menu-title">Gestion Des Wikis</span>
+                <i class="mdi mdi-book-outline menu-icon"></i>
+              </a>
+            </li>
 
            
             
@@ -107,47 +114,39 @@
                 </ul>
               </nav>
             </div>
-           
-            
-            <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div id="defult">
-            <a class="btn btn-success p-2 px-4 my-1" href="index.php?action=add_wiki">Add</a>
-                <table class="table table-bordered border-dark shadow">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Author</th>
-                            <th>Category</th>
-                            <th>Image Filename</th>
-                            <th>Created At</th>
-                            <th>Archive</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($wikis as $wiki) { ?>
-                            <tr >
-                                <td class="col-md-2"><?=$wiki->getTitle();?></td>
-                                <td class="col-md-2"><a href="">view content</a></td>
-                                <td class="col-md-2"><?=$wikiss_control->getauthornam($wiki->getAuthorId());?></td>
-                                <td class="col-md-1"><?=$wikiss_control->getcatgrnam($wiki->getCategoryId());?></td>
-                                <td class="col-md-1"><?=$wiki->getImageFilename();?></td>
-                                <td class="col-md-1"><?=$wiki->getCreatedAt();?></td>
-                                <td class="col-md-1">
-                                    <a class="btn btn-primary rounded p-2" href="index.php?action=modif_wiki&id=<?=$wiki->getId();?>&catid=<?=$wiki->getCategoryId();?>">modify</a>
-                                    <a class="btn btn-danger rounded p-2" href="index.php?action=delet_wiki&id=<?=$wiki->getId();?>">delet</a>
-                                </td>
-                            </tr>
-                        <?php }?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
+            <div id="defult">
+              <table class="table table-bordered border-dark shadow">
+                <thead>
+                  <tr>
+                    <td>title</td>
+                    <td>content</td>
+                    <td>author</td>
+                    <td>category</td>
+                    <td>image_filename</td>
+                    <td>created_at</td>
+                    <td>is archieved</td>
+                    <td>archive</td>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($wikis as $wiki ){ ?>
+                  <tr>
+                    <td><?=$wiki->getTitle();?></td>
+                    <td class="col-md-2"><a href="">view content</a></td>
+                    <td><?=$wikiss_control->getauthornam($wiki->getAuthorId());?></td>
+                    <td><?=$wikiss_control->getcatgrnam($wiki->getCategoryId());?></td>
+                    <td><?=$wiki->getImageFilename();?></td>
+                    <td><?=$wiki->getCreatedAt();?></td>
+                    <td><?=$wiki->getis_archived();?></td>
+                    <td><a class="btn btn-success rounded p-2" href="index.php?action=restor_wiki&id=<?=$wiki->getId();?>">restor</a></td>
+                  </tr>
+
+                   <?php }?>
+                </tbody>
+              </table>
+            </div>
            
            
                   </div>
@@ -186,10 +185,6 @@
     <script src="APP\view\dashboard_admin\assets\js\dashboard.js"></script>
     <script src="APP\view\dashboard_admin\assets\js\todolist.js"></script>
     <!-- End custom js for this page -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
-    
 
     
   </body>

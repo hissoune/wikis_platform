@@ -68,4 +68,16 @@ public function modif_cat($cat_nam ,$cat_id){
         $stmt->execute();
         return true;
 }
+public function statistcats(){
+    $query = "SELECT COUNT(id) FROM categories";
+
+$stmt = $this->db->query($query);
+
+if ($stmt) {
+    $result = $stmt->fetchColumn();
+    return $result;
+} else {
+    return false;
+}
+}
 }

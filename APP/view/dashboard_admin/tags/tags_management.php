@@ -70,13 +70,12 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <span class="menu-title">Dashboard</span>
+          <li class="nav-item">
+              <a class="nav-link" href="index.php?action=admin">
+                <span class="menu-title">statistique</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-
             <li class="nav-item ">
               <a class="nav-link" href="index.php?action=ges_cat" id="link">
                 <span class="menu-title">Gestion Des Category</span>
@@ -84,16 +83,17 @@
               </a>
             </li>
 
-            <li class="nav-item ">
-              <a class="nav-link" href="index.php?action=ges_tags">
-                <span class="menu-title">Gestion Des Tags</span>
-                <i class="mdi mdi-tag-outline menu-icon"></i>
-              </a>
-              </li>
+            
 
             <li class="nav-item  ">
               <a class="nav-link" href="index.php?action=ges_wikis">
                 <span class="menu-title">Gestion Des Wikis</span>
+                <i class="mdi mdi-book-outline menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item  ">
+              <a class="nav-link" href="index.php?action=get_archievd">
+                <span class="menu-title"> Wikis archiver</span>
                 <i class="mdi mdi-book-outline menu-icon"></i>
               </a>
             </li>

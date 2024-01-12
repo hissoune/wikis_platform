@@ -20,11 +20,22 @@ if (isset($_GET["action"])) {
      $action = $_GET["action"];
   switch($action){
     case 'admin':
+    $councategrs=$cat_control->statistcats();
+    $counttags=$tags_control->statistctags();
+   $countusers= $users_control->statisticuser();
+       $countwikis= $wikiss_control->staticwiki();
+print_r($countwikis);
         require 'APP\view\dashboard_admin\dashbord.php';
 
                 break;
         case 'auther':
-            $wikiss_control->get_wikis_forauther();
+            session_start();
+         $user= $_SESSION['user'];
+         $userid= $user['id'];
+         
+         $wikis= $wikiss_control->get_wikifor_athor($userid);
+        
+            require 'APP\VIEW\dashboard_auther\dashboard_auther.php';
 
             break;
    case 'ges_cat':
@@ -56,9 +67,17 @@ if (isset($_GET["action"])) {
             require 'APP\VIEW\dashboard_admin\wikis_managment.php';
 
             break;
+            case 'get_archievd':
+                $wikis=$wikiss_control->get_archievd_wikis();
+                require 'APP\VIEW\dashboard_admin\archived_wikis.php';
+    
+                break;
             case 'archiv_wiki':
                 $wikiss_control->archive_wiki();
                 break;
+                case 'restor_wiki':
+                    $wikiss_control->restor_wiki();
+                    break;
                 case 'register':
             require 'APP\view\login\register.php';
                     break;
@@ -101,6 +120,24 @@ if (isset($_GET["action"])) {
                                                         case 'delet_wiki':
                                                             $wikiss_control->delet_wiki();
                                                             break;
+                                                            case 'modif_wiki':
+                                                                session_start();
+                                                               $wikis= $wikiss_control->getwikibyid();
+                                                               print_r($wikis);
+                                                                $categories= $cat_control->get_categories_select();
+                                                                $user= $_SESSION['user'];
+                                                                $userid= $user['id'];
+                                                                $tags= $tags_control->get_tags_toselect();
+                                                                $curenttags= $wikiss_control->gettagsid();
+                                                                print_r($curenttags);
+
+                                                                $curent_cat=$_GET['catid'];
+                                                             require 'APP\VIEW\dashboard_auther\modify_wiki.php';
+
+                                                                break;
+                                                                case 'update':
+                                                                    $wikiss_control->update();
+                                                                    break;
                                     
     }
 }else{

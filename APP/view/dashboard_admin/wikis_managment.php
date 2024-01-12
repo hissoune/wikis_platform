@@ -66,8 +66,8 @@
           <ul class="nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <span class="menu-title">Dashboard</span>
+              <a class="nav-link" href="index.php?action=admin">
+                <span class="menu-title">statistique</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
@@ -86,9 +86,11 @@
               </a>
               </li>
 
+            
+            </li>
             <li class="nav-item  ">
-              <a class="nav-link" href="index.php?action=ges_wikis">
-                <span class="menu-title">Gestion Des Wikis</span>
+              <a class="nav-link" href="index.php?action=get_archievd">
+                <span class="menu-title"> Wikis archiver</span>
                 <i class="mdi mdi-book-outline menu-icon"></i>
               </a>
             </li>
@@ -134,9 +136,9 @@
                   <?php foreach($wikis as $wiki ){ ?>
                   <tr>
                     <td><?=$wiki->getTitle();?></td>
-                    <td><?=$wiki->getContent();?></td>
-                    <td><?=$wikisDAO->getAuthernam_byId($wiki->getAuthorId());?></td>
-                    <td><?=$wikisDAO->getCategorynam_byId($wiki->getCategoryId());?></td>
+                    <td class="col-md-2"><a href="">view content</a></td>
+                    <td><?=$wikiss_control->getauthornam($wiki->getAuthorId());?></td>
+                    <td><?=$wikiss_control->getcatgrnam($wiki->getCategoryId());?></td>
                     <td><?=$wiki->getImageFilename();?></td>
                     <td><?=$wiki->getCreatedAt();?></td>
                     <td><?=$wiki->getis_archived();?></td>

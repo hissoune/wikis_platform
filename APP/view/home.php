@@ -63,7 +63,7 @@
 
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="#">Your Wiki App</a>
+    <a class="navbar-brand fs-2" href="#"><strong class="text-success">Wiki</strong>App</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -85,12 +85,15 @@
       <!-- Wiki Section -->
       <!-- Search Form -->
       <div class="col-md-4 mt-5 ">
-        <h2 class="text-white">Search</h2>
-        <form action="index.php?action=search" method="GET">
+        <h2 class="text-white mt-5 ">Search</h2>
+        <form action="index.php?action=search" method="GET" class="  ">
           <div class="form-group">
             <input type="text" id="searchInput" class="form-control" placeholder="Search...">
           </div>
-          <div class="search-results col-md-12 bg-body  " id="searchResults"></div>
+          <div class="search-results col-md-12 bg-body  " id="searchResults">
+          
+          </div>
+          <div class="search-results col-md-12 bg-body  " id="noResultsMessage">no result</div>
         </form>
       
       </div>
@@ -194,12 +197,14 @@
   <script>
   $(document).ready(function () {
     var resultsContainer = $('#searchResults');
+    var noResultsMessage = $('#noResultsMessage');
 
     $('#searchInput').on('input', function () {
       var searchTerm = $(this).val();
 
       if (searchTerm.trim() === '') {
         resultsContainer.empty().hide();
+        noResultsMessage.hide();
         return;
       }
 
@@ -211,20 +216,25 @@
         success: function (data) {
           resultsContainer.empty();
 
-          $.each(data, function (index, result) {
-            var cardHtml = `
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h5 class="card-title">${result.title}</h5>
-                  <p class="card-text">${result.content}</p>
-                  <p class="card-text"><small class="text-muted">${result.authername}</small></p>
+          if (data.length === 0) {
+            noResultsMessage.show();
+          } else {
+            noResultsMessage.hide();
+            $.each(data, function (index, result) {
+              var cardHtml = `
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">${result.title}</h5>
+                    <p class="card-text">${result.content}</p>
+                    <p class="card-text"><small class="text-muted">${result.authername}</small></p>
+                  </div>
                 </div>
-              </div>
-            `;
-            resultsContainer.append(cardHtml);
-          });
+              `;
+              resultsContainer.append(cardHtml);
+            });
 
-          resultsContainer.show();
+            resultsContainer.show();
+          }
         }
       });
     });
@@ -232,10 +242,12 @@
     $('#searchInput').on('change', function () {
       if ($(this).val().trim() === '') {
         resultsContainer.empty().hide();
+        noResultsMessage.hide();
       }
     });
   });
 </script>
+
 
 </body>
 

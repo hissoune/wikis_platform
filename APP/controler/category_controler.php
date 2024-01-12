@@ -26,10 +26,10 @@ public  static function get_categories_byid(){
     }
     public static function modify_cat(){
         extract($_POST);
-       
+        $ncat= new Category('',$cat_nam);
        
         $categoryDAO= new CategoryDAO();
-       $rrr= $categoryDAO->modif_cat($cat_nam ,$cat_id);
+       $rrr= $categoryDAO->modif_cat($cat_nam ,$cat_id );
         if($rrr){
             header('location: index.php?action=ges_cat');
         }
@@ -46,6 +46,12 @@ public  static function get_categories_byid(){
         $categoryDAO= new CategoryDAO();
        $categorys = $categoryDAO->GetCategories_latest();
        return $categorys;
+    }
+    public static function statistcats(){
+        $categoryDAO= new CategoryDAO();
+        $categorys = $categoryDAO->statistcats();
+        return $categorys;
+        
     }
 
 }

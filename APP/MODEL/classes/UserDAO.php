@@ -37,6 +37,18 @@ class UserDAO{
     }
     return $message;
     }
+    public function statsticuser(){
+        $query= " SELECT COUNT(id) from users where role='author'";
+        $stmt = $this->db->query($query);
+    
+        if ($stmt) {
+            $result = $stmt->fetchColumn();
+            return $result;
+        } else {
+            return false;
+        }
+
+    }
     
     public function checklogin($user){
         $query = "SELECT * FROM users WHERE email = :email AND password = :password";

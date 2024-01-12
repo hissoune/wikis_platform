@@ -34,4 +34,16 @@ class  tagsDAO{
         $stmt->bindParam(':tag_nam', $tag_nam);
         $stmt->execute();
     }
+    public function statistctags(){
+        $query = "SELECT COUNT(id) FROM tags";
+
+    $stmt = $this->db->query($query);
+    
+    if ($stmt) {
+        $result = $stmt->fetchColumn();
+        return $result;
+    } else {
+        return false;
+    }
+    }
 }

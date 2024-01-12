@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="APP\view\dashboard_admin\assets\css\style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="APP\view\dashboard_admin\assets\images\favicon.ico" />
+
+    <style>
+      @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count-animate {
+    animation: fadeInUp 1s ease-out;}
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -70,9 +86,9 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <span class="menu-title">Dashboard</span>
+          <li class="nav-item">
+              <a class="nav-link" href="index.php?action=admin">
+                <span class="menu-title">statistique</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
@@ -94,6 +110,13 @@
             <li class="nav-item  ">
               <a class="nav-link" href="index.php?action=ges_wikis">
                 <span class="menu-title">Gestion Des Wikis</span>
+                <i class="mdi mdi-book-outline menu-icon"></i>
+              </a>
+            </li>
+
+            <li class="nav-item  ">
+              <a class="nav-link" href="index.php?action=get_archievd">
+                <span class="menu-title"> Wikis archiver</span>
                 <i class="mdi mdi-book-outline menu-icon"></i>
               </a>
             </li>
@@ -120,7 +143,36 @@
               </nav>
             </div>
 
-            <div id="defult">ddddddddddddddddddddddddddddd
+            <div id="defult" class="row h-auto ">
+              <div class="col-4   border-2 border-primary  count-animate bg-info-subtle">
+                <h6 class="text-center">count of wikis</h6>
+              <div class="card  bg-primary ">
+                 <p class=" fs-1 text-center"><?=$countwikis;?> wikis</p>
+            </div>
+            
+           </div>
+           <div class="col-4  border-2 border-primary count-animate  bg-info-subtle">
+                <h6 class="text-center">count of authors</h6>
+              <div class="card  bg-success ">
+                 <p class=" fs-1 text-center"><?=$countusers;?></p>
+            </div>
+            
+           </div>
+           <div class="col-4  border-2 border-primary count-animate  bg-info-subtle">
+                <h6 class="text-center">count of tags</h6>
+              <div class="card  bg-warning  ">
+                 <p class=" fs-1 text-center"><?=$counttags;?></p>
+            </div>
+            
+           </div>
+           <div class="col-4  border-2 border-primary count-animate  bg-info-subtle">
+                <h6 class="text-center">count of tags</h6>
+              <div class="card  bg-gray ">
+                 <p class=" fs-1 text-center"><?=$councategrs;?></p>
+            </div>
+            
+           </div>
+
             </div>
            
            

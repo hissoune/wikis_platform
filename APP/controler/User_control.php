@@ -38,6 +38,12 @@ class User_control{
 
 
     }
+    public static function statisticuser(){
+        $UserdDAO = new UserDAO();
+        $result = $UserdDAO->statsticuser();
+        return $result;
+        
+    }
     public static function if_user(){
         session_start();
         $user = $_SESSION['user'];
